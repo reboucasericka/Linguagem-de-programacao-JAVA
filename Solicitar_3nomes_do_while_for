@@ -1,0 +1,69 @@
+/*
+Solicitar ao utilizador 3 nomes utilizando while
+*/
+import javax.swing.JOptionPane;
+
+public class nomes1{
+
+    public static void main(String[] args) {
+        /*
+        String nome1=JOptionPane.showInputDialog(null,"Digite o 1º nome");
+        String nome2=JOptionPane.showInputDialog(null,"Digite o 2º nome");
+        String nome3=JOptionPane.showInputDialog(null,"Digite o 3º nome");
+        */
+        int contador=1;
+        while(contador<=5){
+           String nome=JOptionPane.showInputDialog(null,
+                   "Digite o "+contador+"º nome"); 
+           contador++;
+        }
+    }
+}
+_____________________________________________________________________
+/*
+Solicitar ao utilizador 3 nomes utilizando do e while
+*/
+import javax.swing.JOptionPane;
+
+public class nomes2 {
+
+    public static void main(String[] args) {
+        /*
+        String nome1=JOptionPane.showInputDialog(null,"Digite o 1º nome");
+        String nome2=JOptionPane.showInputDialog(null,"Digite o 2º nome");
+        String nome3=JOptionPane.showInputDialog(null,"Digite o 3º nome");
+        */
+        int contador=1;
+        do{
+           String nome=JOptionPane.showInputDialog(null,
+                   "Digite o "+contador+"º nome"); 
+           contador++;
+        }while(contador<=5);        
+    }
+
+}
+__________________________________________________________________________
+/*
+Solicitar ao utilizador 3 nomes utilizando for
+*/
+
+import javax.swing.JOptionPane;
+
+
+public class nomes3 {
+
+    public static void main(String[] args) {
+        /*
+        String nome1=JOptionPane.showInputDialog(null,"Digite o 1º nome");
+        String nome2=JOptionPane.showInputDialog(null,"Digite o 2º nome");
+        String nome3=JOptionPane.showInputDialog(null,"Digite o 3º nome");
+        */
+        
+        for(int contador=1;contador<=5;contador++){
+           String nome=JOptionPane.showInputDialog(null,
+                   "Digite o "+contador+"º nome"); 
+        }             
+    }
+
+}
+
