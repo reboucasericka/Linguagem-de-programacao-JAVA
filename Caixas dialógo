@@ -1,0 +1,170 @@
+import javax.swing.JOptionPane;
+
+public class caixas_1 {
+
+    public static void main(String[] args) {
+       int n1=0,n2=0;
+       // usar showInputDialog
+       try{
+            n1=Integer.parseInt(JOptionPane.showInputDialog(null, 
+               "Digite o 1º número"));
+            n2=Integer.parseInt(JOptionPane.showInputDialog(null, 
+               "Digite o 2º número")); 
+       }
+       catch(Exception e){
+           JOptionPane.showMessageDialog(null, "Verifique o valor inserido.","Erro",
+                 JOptionPane.ERROR_MESSAGE);
+           return;
+       }
+         
+       // usar showMessageDialog
+       JOptionPane.showMessageDialog(null, "A soma dos números é "+(n1+n2),
+               "Soma de 2 números",JOptionPane.INFORMATION_MESSAGE);
+       
+    }
+
+}
+____________
+import javax.swing.JOptionPane;
+
+public class caixas_2 {
+
+    public static void main(String[] args) {
+        
+        int resposta=JOptionPane.showConfirmDialog(null, "Confirma saída do programa",
+                "Sair",JOptionPane.YES_NO_OPTION);
+        
+        if(resposta==0){
+            JOptionPane.showMessageDialog(null, "Confirmou saída do programa",
+                    "ConfirmDialog",JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if (resposta==1){
+            JOptionPane.showMessageDialog(null, "Não confirmou saída do programa",
+                    "ConfirmDialog",JOptionPane.ERROR_MESSAGE);            
+        }
+        else{
+           JOptionPane.showMessageDialog(null, "E R R O",
+                    "ConfirmDialog",JOptionPane.ERROR_MESSAGE);            
+        }
+    }
+
+}
+___________
+import javax.swing.JOptionPane;
+
+public class caixas_3 {
+
+    public static void main(String[] args) {
+        int resposta=JOptionPane.showConfirmDialog(null, "Confirma saída do programa",
+                "Sair",JOptionPane.YES_NO_OPTION);
+        
+        switch(resposta){
+            case 0:
+                JOptionPane.showMessageDialog(null, "Confirmou saída do programa",
+                    "ConfirmDialog",JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case 1:
+                JOptionPane.showMessageDialog(null, "Não confirmou saída do programa",
+                    "ConfirmDialog",JOptionPane.ERROR_MESSAGE);  
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "E R R O",
+                    "ConfirmDialog",JOptionPane.ERROR_MESSAGE);            
+        }        
+    }
+
+}
+____________
+import javax.swing.JOptionPane;
+
+public class caixas_4 {
+
+    public static void main(String[] args) {
+        int resposta=JOptionPane.showConfirmDialog(null, "Confirma saída do programa",
+                "Sair",JOptionPane.YES_NO_OPTION);
+        
+        switch(resposta){
+            case 0 -> JOptionPane.showMessageDialog(null, "Confirmou saída do programa",
+                    "ConfirmDialog",JOptionPane.INFORMATION_MESSAGE);
+            case 1 -> JOptionPane.showMessageDialog(null, "Não confirmou saída do programa",
+                    "ConfirmDialog",JOptionPane.ERROR_MESSAGE);
+            default -> JOptionPane.showMessageDialog(null, "E R R O",
+                    "ConfirmDialog",JOptionPane.ERROR_MESSAGE);            
+        }                
+    }
+}
+_____________
+import javax.swing.JOptionPane;
+
+public class caixas_5 {
+
+    public static void main(String[] args) {
+        int respostas=0;
+        int p1=JOptionPane.showConfirmDialog(null, "Gostou do atendimento?",
+                "1ª Pergunta",JOptionPane.YES_NO_OPTION);
+        if (p1==0) respostas++;
+        int p2=JOptionPane.showConfirmDialog(null, "Gostou do espaço?",
+                "2ª Pergunta",JOptionPane.YES_NO_OPTION);
+        if (p2==0) respostas++;        
+        int p3=JOptionPane.showConfirmDialog(null, "Recomendaria?",
+                "3ª Pergunta",JOptionPane.YES_NO_OPTION);
+        if (p3==0) respostas++;
+        
+        JOptionPane.showMessageDialog(null, "Respostas afirmativas "+respostas,
+                "Questionário",JOptionPane.INFORMATION_MESSAGE);
+        
+    }
+
+}
+________
+import javax.swing.JOptionPane;
+
+/*
+Solicitar ao utilizador o nome e a idade e apresentar no seguinte format:
+
+Boa noite <nome>, a sua idade é <idade>
+*/
+
+public class caixas_6 {
+
+    public static void main(String[] args) {
+        String nome=JOptionPane.showInputDialog(null,"Digite o seu nome");
+        
+        int idade=Integer.parseInt(JOptionPane.showInputDialog(null,
+                "Digite a sua idade"));
+        
+        JOptionPane.showMessageDialog(null, "Boa noite "+
+                nome+", a sua idade é "+idade);
+        
+    }
+
+}
+__________
+import javax.swing.JOptionPane;
+
+/*
+Solicitar ao utilizador uma palavra pass e de seguida um confirmação. Se forem iguais 
+apresentamos a mensagem "Login efetuado com sucesso", senão escrevemos "As passwords não
+coincidem".
+*/
+public class caixas_7 {
+
+    public static void main(String[] args) {
+        
+        String pass=JOptionPane.showInputDialog(null,"Digite a password");
+        
+        String pass1=JOptionPane.showInputDialog(null,"Confirme a password");
+        
+        if(pass.toUpperCase().equals(pass1.toUpperCase())){
+            JOptionPane.showMessageDialog(null, "Login efetuado com sucesso",
+                    "Login",JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+          JOptionPane.showMessageDialog(null, "As passwords não coincidem",
+                    "Login",JOptionPane.ERROR_MESSAGE);            
+        }
+        
+    }
+
+}
+
