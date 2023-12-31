@@ -1,0 +1,89 @@
+AreaQuadrado.java
+import javax.swing.JOptionPane;
+
+public class AreaQuadrado {
+    
+    public static void main(String[] args) {
+        Dimensao Quadrado=new Dimensao();
+        
+        Quadrado.x(Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o valor do lado em metros")));
+       Quadrado.y(Quadrado.x());
+        
+        JOptionPane.showMessageDialog(null, "A área do quadrado é "+
+                (Quadrado.Area())+" m2",
+                "Área do quadrado",
+                JOptionPane.INFORMATION_MESSAGE);        
+    }
+
+}
+____
+AreaRetangulo.java
+
+import javax.swing.JOptionPane;
+
+public class AreaRectangulo {
+    
+    public static void main(String[] args) {
+        Dimensao Retangulo=new Dimensao();
+        
+        Retangulo.x(Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o valor do lado maior em metros")));
+        Retangulo.y(Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o valor do lado menor em metros")));
+        
+        JOptionPane.showMessageDialog(null, "A área do rectângulo é "+
+                Retangulo.Area()+" m2",
+                "Área do rectângulo",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
+
+}
+_______
+AreaTriangulo
+
+import javax.swing.JOptionPane;
+
+public class AreaTriangulo {
+    
+    public static void main(String[] args) {
+        
+        Dimensao Triangulo=new Dimensao();
+        
+        Triangulo.x(Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o valor da base em metros")));
+        Triangulo.y(Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o valor da altura em metros")));
+        
+        JOptionPane.showMessageDialog(null, "A área do triângulo é "+
+                (Triangulo.Area()/2)+" m2",
+                "Área do triângulo",
+                JOptionPane.INFORMATION_MESSAGE);
+        
+    }
+
+}
+_____
+Dimensao.java
+package pkg0789_classes;
+
+public class Dimensao {
+   private int x, y; 
+
+   // setter
+   public void x(int x){
+       this.x=x;
+   }     
+   public void y(int y){
+       this.y=y;
+   }   
+   
+   // getters
+   public int x(){
+       return(x);
+   }
+   public int y(){
+       return(y);
+   }           
+   
+   public int Area(){
+     return(x*y);
+   }
+
+}
+
