@@ -1,0 +1,45 @@
+Crie um novo projeto em Java.
+
+Recorrendo às caixas de diálogo no Java e à classe Random, desenvolva um
+programa que gere um nº aleatório entre 0 e 100 e ofereça 5 tentativas ao utilizador
+para adivinhar o número gerado. A cada tentativa o programa deve informar se o
+número do utilizador está abaixo ou acima do número gerado. Se dentro das
+tentativas o utilizador adivinhar o número o programa termina, caso contrário o
+utilizador é informado do número gerado. Em ambas as situações vamos dar
+possibilidade ao utilizador de repetir o programa.
+
+import java.util.Random;
+import javax.swing.JOptionPane;
+
+
+public class Main {
+
+    public static void main(String[] args) {
+        
+        do{
+            Random Aleatorio=new Random();
+            int pc=Aleatorio.nextInt(101);
+            for(int tentativa=1;tentativa<=5;tentativa++){
+                int user=Integer.parseInt(JOptionPane.showInputDialog(null,
+                        "Digite um número entre 1 e 100"));
+                if(user<pc){
+                    JOptionPane.showMessageDialog(null, "O número está abaixo do sorteado",
+                            tentativa+"ª Tentativa",JOptionPane.INFORMATION_MESSAGE);
+                }
+                else if(user>pc){
+                    JOptionPane.showMessageDialog(null, "O número está acima do sorteado",
+                            tentativa+"ª Tentativa",JOptionPane.INFORMATION_MESSAGE);
+                }  
+                else{
+                    JOptionPane.showMessageDialog(null, "Acertou ao fim da "+tentativa+"ª Tentativa",
+                            "Jogo",JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                }            
+            }
+
+            JOptionPane.showMessageDialog(null, "GAME OVER \n"+"O número sorteado foi "+pc,
+                    "Fim do jogo",JOptionPane.INFORMATION_MESSAGE);
+        }while(JOptionPane.showConfirmDialog(null, "Clique em Yes para jogar novamente",
+                "Novo jogo",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION);
+    }
+}
