@@ -1,0 +1,129 @@
+import javax.swing.JOptionPane;
+
+/*
+solicitar números ao utilizador até que o número indicado seja o "zero". No final vamos mostrar
+a soma dos números inseridos e a quantidade de números indicados.
+*/
+
+public class exercicio1 {
+   
+    public static void main(String[] args) {
+        int numero=0,soma=0,contagem=0;
+        
+        do{
+            
+            try{
+                numero=Integer.parseInt(JOptionPane.showInputDialog(null,
+                    "Digite um número"));
+                soma+=numero;  // soma=soma+numero
+                contagem++;    // contagem=contagem+1
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Verifque o número",
+                        "ERRO",JOptionPane.ERROR_MESSAGE);
+            }
+            
+        }while(numero!=0);
+        
+        JOptionPane.showMessageDialog(null, "A soma dos números é "+
+                (soma)+" e foram inseridos "+(contagem-1)+" números.");
+    }
+
+}
+_________
+import javax.swing.JOptionPane;
+
+public class exercicio2 {
+
+    public static void main(String[] args) {
+       int numero=1,soma=0,contagem=0;
+        
+        while(numero!=0){
+            
+            try{
+                numero=Integer.parseInt(JOptionPane.showInputDialog(null,
+                    "Digite um número"));
+                soma+=numero;  // soma=soma+numero
+                contagem++;    // contagem=contagem+1
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Verifque o número",
+                        "ERRO",JOptionPane.ERROR_MESSAGE);
+            }
+            
+        }
+        
+        JOptionPane.showMessageDialog(null, "A soma dos números é "+
+                (soma)+" e foram inseridos "+(contagem-1)+" números.");        
+    }
+
+}
+_______
+import java.util.Random;
+import javax.swing.JOptionPane;
+
+/*
+Classe Random - Permite gerar números aleatórios
+*/
+
+public class exercicio3 {
+
+    public static void main(String[] args) {
+        
+        Random Sorteio=new Random(); 
+        
+        for(int i=1;i<=5;i++){
+        
+            int Numero=Sorteio.nextInt(5)+1; // está entre 1 e 5
+            JOptionPane.showMessageDialog(null,Numero,
+                    i+"º número",JOptionPane.INFORMATION_MESSAGE);
+        
+        }
+    }
+
+}
+__________
+import java.util.Random;
+import javax.swing.JOptionPane;
+
+
+public class exercicio4 {
+
+    public static void main(String[] args) {
+        int i=1;
+        Random Sorteio=new Random(); 
+        
+        while(i<=5){
+        
+            int Numero=Sorteio.nextInt(41)+10; // está entre 10 e 50
+            JOptionPane.showMessageDialog(null,Numero,
+                    i+"º número",JOptionPane.INFORMATION_MESSAGE);
+            i++;
+        
+        }
+    }
+
+}
+________
+import java.util.Random;
+import javax.swing.JOptionPane;
+
+
+public class exercicio5 {
+
+    public static void main(String[] args) {
+        int i=1;
+        Random Sorteio=new Random(); 
+        
+        do{
+        
+            int Numero=Sorteio.nextInt(41)+10; // está entre 10 e 50
+            JOptionPane.showMessageDialog(null,Numero,
+                    i+"º número",JOptionPane.INFORMATION_MESSAGE);
+            i++;
+        
+        }while(i<=5);        
+    }
+
+}
+
