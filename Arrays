@@ -1,0 +1,110 @@
+_______________
+
+import javax.swing.JOptionPane;
+
+public class Exercicio1 {
+
+    public static void main(String[] args) {
+        // declarar e inicializar um array unidimensional
+        int[] vetor={5,10,15,20,25};
+        
+        // para mostrar os valores do array
+        for(int i=0;i<5;i++){
+            JOptionPane.showMessageDialog(null,"O valor da posição "+(i+1)+
+                    " é "+vetor[i],"Arrays",JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    }
+
+}
+________________
+
+import java.util.Random;
+import javax.swing.JOptionPane;
+
+public class Exercicio2 {
+
+    public static void main(String[] args) {
+        // declarar e inicializar um array unidimensional
+        int[] vetor=new int[5];
+        
+        Random Aleatorio=new Random();
+        for(int i=0;i<5;i++){
+            vetor[i]=Aleatorio.nextInt(51);
+        }       
+        // para mostrar os valores do array
+        for(int i=0;i<5;i++){
+            JOptionPane.showMessageDialog(null,"O valor da posição "+(i+1)+
+                    " é "+vetor[i],"Arrays",JOptionPane.INFORMATION_MESSAGE);
+        }      
+       // para mostrar os valores do array
+       String saida="";
+        for(int i=0;i<5;i++){
+            saida+="\nO valor da posição "+(i+1)+" é "+vetor[i];
+        }                  
+        JOptionPane.showMessageDialog(null,saida,"Arrays",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
+}
+________________________
+
+import java.util.Random;
+import javax.swing.JOptionPane;
+
+public class Exercicio3 {
+
+    public static void main(String[] args) {
+        String[] Cores=new String[5];
+        
+        Cores[0]="Azul";Cores[1]="Verde";Cores[2]="Amarelo";Cores[3]="Preto";Cores[4]="Branco";
+        Random Aleatorio=new Random();
+        
+        do{
+              
+            int cor=Aleatorio.nextInt(6);
+            
+            JOptionPane.showMessageDialog(null, "A cor sorteada foi "+
+                    Cores[cor],"Cores",JOptionPane.INFORMATION_MESSAGE);
+            
+        }while(JOptionPane.showConfirmDialog(null, "Clique em Yes para repetir",
+                "Nova cor",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION);
+    }
+
+}
+_______________
+
+import java.text.DecimalFormat;
+import java.util.Random;
+
+public class Exercicio4 {
+
+    public static void main(String[] args) {
+        // declarar uma matriz 3 x 3
+        
+        int[][] matriz=new int[3][3];
+        
+        Random Aleatorio=new Random();
+        DecimalFormat Ft=new DecimalFormat("00");
+        for(int linha=0;linha<3;linha++){
+            for(int coluna=0;coluna<3;coluna++){
+                matriz[linha][coluna]=Aleatorio.nextInt(21);
+                System.out.print(Ft.format(matriz[linha][coluna])+" ");
+            }
+            System.out.println();
+        }
+        // Elementos da diagonal esquerda
+        System.out.println("\nValores da diagonal esquerda:");
+        for(int i=0;i<3;i++){
+          System.out.print(Ft.format(matriz[i][i])+" ");  
+        }
+        // Elementos da diagonal direita
+        System.out.println("\nValores da diagonal direita:");
+        for(int i=0;i<3;i++){
+          System.out.print(Ft.format(matriz[i][2-i])+" ");  
+        }        
+    }
+
+}
+
+
+
