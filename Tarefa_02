@@ -8,7 +8,60 @@ Crie um programa que coloque 5 perguntas a uma pessoa sobre um crime. As pergunt
 4. "Tinha dívidas com a vítima?"
 5. "Já trabalhou com a vítima?"
 
+
+import javax.swing.JOptionPane;
+
+public class Main {
+
+    public static void main(String[] args) {
+               
+        int resposta=0, resultados=0,saida=0;
+         
+        do{
+            resultados=0;
+            resposta=JOptionPane.showConfirmDialog(null, "Telefonou para a vítima?",
+                    "1ª Pergunta",JOptionPane.YES_NO_OPTION);
+            if (resposta==0) resultados++;
+            resposta=JOptionPane.showConfirmDialog(null, "Esteve no local do crime?",
+                    "2ª Pergunta",JOptionPane.YES_NO_OPTION);
+            if (resposta==0) resultados++; 
+            resposta=JOptionPane.showConfirmDialog(null, "Mora perto da vítima?",
+                    "3ª Pergunta",JOptionPane.YES_NO_OPTION);
+            if (resposta==0) resultados++;        
+            resposta=JOptionPane.showConfirmDialog(null, "Tinha dívidas com a vítima?",
+                    "4ª Pergunta",JOptionPane.YES_NO_OPTION);
+            if (resposta==0) resultados++; 
+            resposta=JOptionPane.showConfirmDialog(null, "Já trabalhou com a vítima?",
+                    "5ª Pergunta",JOptionPane.YES_NO_OPTION);
+            if (resposta==0) resultados++;  
+
+
 O programa deve no final emitir uma classificação sobre a participação da pessoa no crime. Se a
 pessoa responder positivamente a 2 questões deve ser classificada como "Suspeita", entre 3 e 4 como
 "Cúmplice" e 5 como "Assassino". Caso contrário, será classificada como "Inocente".
 No final deve dar possibilidade de repetir.
+
+
+            if(resultados==2){
+                JOptionPane.showMessageDialog(null, "Suspeita",
+                        "Classificação",JOptionPane.INFORMATION_MESSAGE);
+            }
+            else if (resultados>=3 && resultados<=4){
+                JOptionPane.showMessageDialog(null, "Cumplice",
+                        "Classificação",JOptionPane.INFORMATION_MESSAGE);
+            }
+            else if (resultados==5){
+              JOptionPane.showMessageDialog(null, "Assassino",
+                        "Classificação",JOptionPane.INFORMATION_MESSAGE);            
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Inocente",
+                        "Classificação",JOptionPane.INFORMATION_MESSAGE);
+            }
+            saida=JOptionPane.showConfirmDialog(null, "Clique em Yes para continuar",
+                    "Continuar?",JOptionPane.YES_NO_OPTION);
+            
+        }while(saida==0);
+    }
+}
+
