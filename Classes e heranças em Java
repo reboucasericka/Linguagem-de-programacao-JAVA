@@ -1,0 +1,305 @@
+Crie uma classe Veículo que obedeça à seguinte descrição:
+Possua os atributos marca (String), modelo (String), ano (int), preco (double), combustivel (String) e velocidade máxima (int)
+Possua um construtor que receba por parâmetro os valores iniciais de cada um dos atributos e os atribua aos seus respetivos membros.
+Possua os métodos get e set para cada um dos atributos.
+Possua um método dados, sem parâmetro e do tipo void, que, quando chamado, imprime no ecrã uma espécie de relatório com todos os dados do veículo.
+
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
+
+/*
+Possua os atributos marca (String), modelo (String), ano (int), preco (double), combustivel (String) e velocidade máxima (int) 
+*/
+
+public class Veiculo {
+    private String Marca, Modelo, Combustivel;
+    private int Ano, VelocidadeMaxima;
+    private double Preco;
+
+    public Veiculo(String Marca, String Modelo, String Combustivel, int Ano, 
+            int VelocidadeMaxima,
+            double Preco){
+        this.Marca=Marca;
+        this.Modelo=Modelo;
+        this.Combustivel=Combustivel;
+        this.Ano=Ano;
+        this.VelocidadeMaxima=VelocidadeMaxima;
+        this.Preco=Preco;
+    }
+    
+    public void DadosVeiculo(){
+        DecimalFormat Ft=new DecimalFormat("#,##0 km/h");
+        DecimalFormat Ft1=new DecimalFormat("#,##0.00 €");
+        JOptionPane.showMessageDialog(null,
+                "Marca: "+this.Marca+
+                "\nModelo: "+this.Modelo+
+                "\nCombustível: "+this.getCombustivel()+        
+                "\nAno: "+this.Ano+
+                "\nVelocidade Máxima: "+Ft.format(this.VelocidadeMaxima)+
+                "\nPreco: "+Ft1.format(this.Preco),"Classe Veículo",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    /**
+     * @return the Marca
+     */
+    public String getMarca() {
+        return Marca;
+    }
+
+    /**
+     * @param Marca the Marca to set
+     */
+    public void setMarca(String Marca) {
+        this.Marca = Marca;
+    }
+
+    /**
+     * @return the Modelo
+     */
+    public String getModelo() {
+        return Modelo;
+    }
+
+    /**
+     * @param Modelo the Modelo to set
+     */
+    public void setModelo(String Modelo) {
+        this.Modelo = Modelo;
+    }
+      
+    /**
+     * @return the Ano
+     */
+    public int getAno() {
+        return Ano;
+    }
+
+    /**
+     * @param Ano the Ano to set
+     */
+    public void setAno(int Ano) {
+        this.Ano = Ano;
+    }
+
+    /**
+     * @return the VelocidadeMaxima
+     */
+    public int getVelocidadeMaxima() {
+        return VelocidadeMaxima;
+    }
+
+    /**
+     * @param VelocidadeMaxima the VelocidadeMaxima to set
+     */
+    public void setVelocidadeMaxima(int VelocidadeMaxima) {
+        this.VelocidadeMaxima = VelocidadeMaxima;
+    }
+
+    /**
+     * @return the Preco
+     */
+    public double getPreco() {
+        return Preco;
+    }
+
+    /**
+     * @param Preco the Preco to set
+     */
+    public void setPreco(double Preco) {
+        this.Preco = Preco;
+    }
+
+    /**
+     * @return the Combustivel
+     */
+    public String getCombustivel() {
+        return Combustivel;
+    }
+
+    /**
+     * @param Combustivel the Combustivel to set
+     */
+    public void setCombustivel(String Combustivel) {
+        this.Combustivel = Combustivel;
+    }
+        
+}
+  
+Crie uma classe Carro que herde da classe Veiculo e obedeça à seguinte descrição:
+Possua o atributo portas (int).
+Possua um método construtor que receba por parâmetro os valores iniciais de cadaum dos atributos e os atribua aos respetivos membros (atributos).
+Possua ainda os métodos get e set para o atributo portas.
+Possua um método dados sem parâmetro e do tipo void, que, quando chamado, imprime no ecrã um relatório com os dados do carro (incluindo os dados do Veiculo mais as portas).
+
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
+
+public class Carro extends Veiculo{
+    private int Portas;
+
+    
+    public Carro(String Marca, String Modelo, String Combustivel, int Ano, 
+            int VelocidadeMaxima,
+            double Preco, int Portas){
+        super(Marca, Modelo, Combustivel, Ano, VelocidadeMaxima,
+                Preco);
+        this.Portas=Portas;
+    }    
+    
+    public void DadosCarro(){
+        DecimalFormat Ft=new DecimalFormat("#,##0 km/h");
+        DecimalFormat Ft1=new DecimalFormat("#,##0.00 €");
+        JOptionPane.showMessageDialog(null,
+                "Marca: "+super.getMarca()+
+                "\nModelo: "+super.getModelo()+
+                "\nCombustível: "+super.getCombustivel()+        
+                "\nAno: "+super.getAno()+
+                "\nVelocidade Máxima: "+Ft.format(super.getVelocidadeMaxima())+
+                "\nPreco: "+Ft1.format(super.getPreco())+
+                "\nPortas: "+this.Portas,"Classe Carro",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public int getPortas() {
+        return Portas;
+    }
+    
+    public void setPortas(int Portas) {
+        this.Portas = Portas;
+    }
+    
+    
+}
+
+Crie uma classe Aviao que herde da classe Veiculo e obedeça à seguinte descrição:
+Possua um atributo TipodeAsa(String)
+Possua um método construtor que receba por parâmetro os valores iniciais de cada um dos atributos e os atribua aos seus respetivos membros (atributos).
+Possua os métodos get e set para o atributo TipodeAsa.  Possua um método dados sem parâmetro e do tipo void, que, quando chamado, imprime no ecrã uma listagem com os dados do avião (incluindo os dados do veiculo e o tipo de asa).
+
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
+
+public class Aviao extends Veiculo{
+    private String TipodeAsa;
+
+    
+    public Aviao(String Marca, String Modelo, String Combustivel, int Ano, 
+            int VelocidadeMaxima,
+            double Preco, String TipodeAsa){
+        super(Marca, Modelo, Combustivel, Ano, VelocidadeMaxima,
+                Preco);
+        this.TipodeAsa=TipodeAsa;
+    }    
+    
+    public void DadosAviao(){
+        DecimalFormat Ft=new DecimalFormat("#,##0 km/h");
+        DecimalFormat Ft1=new DecimalFormat("#,##0.00 €");
+        JOptionPane.showMessageDialog(null,
+                "Marca: "+super.getMarca()+
+                "\nModelo: "+super.getModelo()+
+                "\nCombustível: "+super.getCombustivel()+        
+                "\nAno: "+super.getAno()+
+                "\nVelocidade Máxima: "+Ft.format(super.getVelocidadeMaxima())+
+                "\nPreco: "+Ft1.format(super.getPreco())+
+                "\nTipo de Asa: "+this.TipodeAsa,"Classe Avião",
+                JOptionPane.INFORMATION_MESSAGE);
+    }    
+    
+    public String getTipodeAsa() {
+        return TipodeAsa;
+    }
+
+    
+    public void setTipodeAsa(String TipodeAsa) {
+        this.TipodeAsa = TipodeAsa;
+    }
+    
+    
+}
+
+Crie uma classe TestarVeiculo que possua um método main para testar as classes criadas:
+  Crie um objeto jipe do tipo Veículo e atribua os seguintes valores para seus atributos:
+Marca: Range Rover
+Modelo: XPTO 20
+Ano: 2000
+Preço: 20.000
+Combustível: Gasóleo
+Velocidade Máxima: 240 Km/h
+
+  
+  
+Crie um objeto bolide do tipo Carro e atribua os seguintes valores para seus atributos:
+Marca: Honda
+Modelo: Civic
+Ano: 2004
+Preço: 15.000
+Combustível: Gasolina
+Velocidade Máxima: 200 Km/h
+Nº Portas: 5
+
+Crie um objeto voar do tipo Aviao e atribua os seguintes valores para seus atributos:
+Marca: Boing
+Modelo: 777
+Ano: 2004
+Preço: 400.000
+Combustível: Jet Fuel
+Velocidade Máxima: 950 Km/h
+Tipo de Asa: Fixa
+___________
+
+public class TestarVeiculo {
+    
+    public static void main(String[] args) {
+      /*
+         Marca: Range Rover 
+         Modelo: XPTO 20 
+         Combustível: Gasóleo
+         Ano: 2000 
+         Velocidade Máxima: 240 Km/h 
+         Preço: 20.000 
+         
+        
+        */ 
+      
+      Veiculo Jipe=new Veiculo("Range Rover","XPTO 20","Gasóleo",2000,240,
+      20000);
+      
+      Jipe.DadosVeiculo();
+      
+      
+      /*
+         Marca: Honda 
+         Modelo: Civic 
+         Combustível: Gasolina
+         Ano: 2004 
+         Velocidade Máxima: 200 Km/h
+         Preço: 15.000 
+         Nº Portas: 5 
+      */
+      
+      Carro Bolide=new Carro("Honda","Civic","Gasolina",2004,200,
+      15000,5);
+      
+      Bolide.DadosCarro();
+      
+      /*
+         Marca: Boing 
+         Modelo: 777 
+         Combustível: Jet Fuel 
+         Ano: 2004 
+         Velocidade Máxima: 950 Km/h 
+         Preço: 400.000 
+         Tipo de Asa: Fixa
+      */
+      
+      Aviao Voar=new Aviao("Boing","777","Jet Fuel",2004,950,
+      400000,"Asa");
+      
+      Voar.DadosAviao();
+    }
+
+}
+  
+Crie um outro objeto para representar o seu veículo favorito. Pesquise os dados do mesmo e atribua as informações como nos exemplos anteriores.  
+Chame os métodos específicos para imprimir os dados de cada um dos objetos criados.
