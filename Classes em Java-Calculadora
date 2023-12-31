@@ -1,0 +1,117 @@
+Calculadora:
+Crie uma classe em Java com o nome Calculadora. Esta classe possui 2 variáveis membro do tipo double.
+Crie os Setters e os Getters para as variáveis referidas.
+Crie 4 métodos que retornem respetivamente a soma, a subtração, a multiplicação e a divisão.
+Crie uma Classe do tipo Java Main Class que solicite ao utilizador 2 valores do tipo double e invoce os métodos da Classe.
+Use as caixas de diálogo para introdução e visualização dos dados.
+
+public class Calculadora {
+   private double Numero1, Numero2;
+
+    /**
+     * @return the Numero1
+     */
+    public double getNumero1() {
+        return Numero1;
+    }
+
+    /**
+     * @param Numero1 the Numero1 to set
+     */
+    public void setNumero1(double Numero1) {
+        this.Numero1 = Numero1;
+    }
+
+    /**
+     * @return the Numero2
+     */
+    public double getNumero2() {
+        return Numero2;
+    }
+
+    /**
+     * @param Numero2 the Numero2 to set
+     */
+    public void setNumero2(double Numero2) {
+        this.Numero2 = Numero2;
+    }
+   
+   // criar o método para a adição
+    public double Soma(){
+        return(Numero1+Numero2);
+    }
+    
+     // criar o método para a subtração
+    public double Subtracao(){
+        return(Numero1-Numero2);
+    }
+    
+     // criar o método para a multiplicação
+    public double Multiplicacao(){
+        return(Numero1*Numero2);
+    }    
+    
+     // criar o método para a divisão
+    public double Divisao(){
+        return(Numero1/Numero2);
+    }    
+}
+--TestaCalculadora.java
+
+import javax.swing.JOptionPane;
+
+public class TestaCalculadora {
+
+    public static void main(String[] args) {
+        String[] Operacoes={"Soma","Subtração","Multiplicação","Divisão"};
+        boolean erro=false;
+        // criar uma instância da classe Calculadora
+        Calculadora Calc=new Calculadora();
+        
+        do{
+            
+            int Escolha=JOptionPane.showOptionDialog(null, 
+                    "Escolha a operação pretendida", "Classe Calculadora", 
+                    JOptionPane.YES_NO_CANCEL_OPTION, 
+                    JOptionPane.PLAIN_MESSAGE, null, 
+                    Operacoes, null);
+            do{
+                try{
+                    Calc.setNumero1(Double.parseDouble(JOptionPane.showInputDialog(null,
+                            "Digite o 1º número")));
+
+                    Calc.setNumero2(Double.parseDouble(JOptionPane.showInputDialog(null,
+                            "Digite o 2º número"))); 
+                    erro=false;
+                    }
+                    catch(Exception e){
+                         JOptionPane.showMessageDialog(null, "Erro"
+                            ,"Calculadora",JOptionPane.ERROR_MESSAGE); 
+                         erro=true;
+                }
+            }while(erro);
+            
+            switch(Escolha){
+                case 0 -> JOptionPane.showMessageDialog(null, "O resultado da soma é:"+
+                        Calc.Soma(),"Soma",JOptionPane.INFORMATION_MESSAGE);
+                case 1 -> JOptionPane.showMessageDialog(null, "O resultado da subtração é:"+
+                        Calc.Subtracao(),"Subtração",JOptionPane.INFORMATION_MESSAGE);   
+                case 2 -> JOptionPane.showMessageDialog(null, "O resultado da multiplicação é:"+
+                        Calc.Multiplicacao(),"Multiplicação",JOptionPane.INFORMATION_MESSAGE); 
+                case 3 -> {
+                    if(Calc.getNumero2()==0){
+                        JOptionPane.showMessageDialog(null, "Divisão por zero"
+                        ,"Calculadora",JOptionPane.ERROR_MESSAGE);                        
+                    }
+                    else{
+                    JOptionPane.showMessageDialog(null, "O resultado da divisão é:"+
+                        Calc.Divisao(),"Divisão",JOptionPane.INFORMATION_MESSAGE); 
+                    }
+                }
+            }
+            
+        }while(JOptionPane.showConfirmDialog(null,"Clique em Yes para continuar",
+                "Classe Calculadora",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION);
+    }
+
+}
