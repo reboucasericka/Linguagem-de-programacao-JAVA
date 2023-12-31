@@ -1,0 +1,189 @@
+Dados.java
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+
+public class Dados {
+    // criar um array dinâmico do tipo MovimentosConta
+    ArrayList<MovimentosConta> ArrayConta=new ArrayList();
+    
+    //criar um método para inserir o movimento
+    public void AdicionarMovimento(MovimentosConta C){
+        this.ArrayConta.add(C);
+    }
+    
+    // listar os movimentos
+    public String ListarMovimentos(){
+        String Lista="";
+        DecimalFormat Ft=new DecimalFormat("#,##0.00 Eur");
+        for(int i=0;i<ArrayConta.size();i++){
+            MovimentosConta C=ArrayConta.get(i);
+            Lista+="\nNºMov."+C.getNumeroMovimento()+
+                    " | Data:"+C.getDataMovimento()+
+                    " | Tipo:"+C.getTipoMovimento()+
+                    " | Valor:"+Ft.format(C.getValorMovimento());
+        }
+        return(Lista);
+    }
+    
+   public String ExtratoMovimentos(){
+        String Lista="";
+        float Depositos=0,Levantamentos=0;
+        DecimalFormat Ft=new DecimalFormat("#,##0.00 Eur");
+        for(int i=0;i<ArrayConta.size();i++){
+            MovimentosConta C=ArrayConta.get(i);
+            Lista+="\nNºMov."+C.getNumeroMovimento()+
+                    " | Data:"+C.getDataMovimento()+
+                    " | Tipo:"+C.getTipoMovimento()+
+                    " | Valor:"+Ft.format(C.getValorMovimento());
+            
+            if(C.getTipoMovimento().equals("D")) Depositos+=C.getValorMovimento();
+            if(C.getTipoMovimento().equals("L")) Levantamentos+=C.getValorMovimento();
+            
+        }
+        Lista+="\n\nDepositos:"+Ft.format(Depositos)+
+                " | Levantamentos:"+Ft.format(Levantamentos)+
+                " | Saldo:"+Ft.format(Depositos-Levantamentos);
+        return(Lista);
+    }
+    // eliminar o movimento
+   public void EliminarMovimento(int NumeroMovimento){
+       for(int i=0;i<ArrayConta.size();i++){
+           MovimentosConta C=ArrayConta.get(i);
+           if(C.getNumeroMovimento()==NumeroMovimento){
+               ArrayConta.remove(i);
+               break;
+           }
+       }
+   }
+}
+_____
+MovimentosConta.java
+public class MovimentosConta {
+    private int NumeroMovimento;
+    private String DataMovimento,TipoMovimento;
+    private float ValorMovimento;
+
+    
+    public int getNumeroMovimento() {
+        return NumeroMovimento;
+    }
+
+    
+    public void setNumeroMovimento(int NumeroMovimento) {
+        this.NumeroMovimento = NumeroMovimento;
+    }
+
+    
+    public String getDataMovimento() {
+        return DataMovimento;
+    }
+
+    
+    public void setDataMovimento(String DataMovimento) {
+        this.DataMovimento = DataMovimento;
+    }
+
+    
+    public String getTipoMovimento() {
+        return TipoMovimento;
+    }
+
+    
+    public void setTipoMovimento(String TipoMovimento) {
+        this.TipoMovimento = TipoMovimento;
+    }
+
+    
+    public float getValorMovimento() {
+        return ValorMovimento;
+    }
+
+    
+    public void setValorMovimento(float ValorMovimento) {
+        this.ValorMovimento = ValorMovimento;
+    }
+    
+    
+}
+_____
+TestarMovimentos.java
+import javax.swing.JOptionPane;
+
+public class TestarMovimentos {
+
+    public static void main(String[] args) {
+        String[] Opcoes={"Inserir Movimento","Listagem Movimentos","Anular Movimento","Extrato de Movimentos"};
+        String[] Tipos={"Deposito","Levantamento"};   
+        
+        Dados D=new Dados();
+        
+        do{
+            
+            int Escolha=JOptionPane.showOptionDialog(null,
+                    "Selecione a sua opção",
+                    "Movimentos de conta",
+                    JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.PLAIN_MESSAGE, null,  Opcoes, null);
+            
+            switch(Escolha){
+                case 0->{
+                    String Data=JOptionPane.showInputDialog(null,
+                            "Digite a data do movimento");
+                    int Tipo=JOptionPane.showOptionDialog(null,
+                    "Selecione o tipo de movimento",
+                    "Movimentos de conta",
+                    JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.PLAIN_MESSAGE, null,  Tipos, null);
+                    String DescTipo="";
+                    if(Tipo==0) DescTipo="D";
+                    if(Tipo==1) DescTipo="L";
+                    float Valor=Float.parseFloat(JOptionPane.showInputDialog(null,
+                            "Digite o valor do movimento"));      
+                    
+                    // criar uma instância da classe MovimentosConta
+                    MovimentosConta C=new MovimentosConta();
+                    int Nmov=D.ArrayConta.size()+1;
+                    C.setNumeroMovimento(Nmov);C.setDataMovimento(Data);
+                    C.setTipoMovimento(DescTipo);C.setValorMovimento(Valor);
+                    D.AdicionarMovimento(C);
+                    JOptionPane.showMessageDialog(null, 
+                            "Registo inserido",
+                            "Movimentos de conta",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+                
+                case 1->{
+                    JOptionPane.showMessageDialog(null, 
+                            D.ListarMovimentos(),
+                            "Lista de Movimentos de conta",
+                            JOptionPane.INFORMATION_MESSAGE);                    
+                }
+                case 2->{
+                    int NMov=Integer.parseInt(JOptionPane.showInputDialog(null,
+                            "Digite o nº do movimento"));  
+                    D.EliminarMovimento(NMov);
+                    JOptionPane.showMessageDialog(null, 
+                            "Registo eliminado",
+                            "Movimentos de conta",
+                            JOptionPane.INFORMATION_MESSAGE);                   
+                }
+                case 3->{
+                    JOptionPane.showMessageDialog(null, 
+                            D.ExtratoMovimentos(),
+                            "Lista de Movimentos de conta",
+                            JOptionPane.INFORMATION_MESSAGE);                    
+                }                
+            }
+            
+            
+            
+        }while(JOptionPane.showConfirmDialog(null, 
+                "Continuar?",
+                "Movimentos de Conta",
+                JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION);
+        
+    }
+
+}
+
+  
