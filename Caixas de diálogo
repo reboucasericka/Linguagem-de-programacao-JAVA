@@ -1,5 +1,4 @@
-Codifique em Java recorrendo ao JOptionPane (showInputDialog, showMesssageDialog e
-showConfirmDialog) os exercícios que se seguem:
+Codifique em Java recorrendo ao JOptionPane (showInputDialog, showMesssageDialog e showConfirmDialog) os exercícios que se seguem:
 
 Crie um programa que coloque 5 perguntas a uma pessoa sobre um crime. As perguntas são:
 1. "Telefonou para a vítima?"
@@ -7,7 +6,6 @@ Crie um programa que coloque 5 perguntas a uma pessoa sobre um crime. As pergunt
 3. "Mora perto da vítima?"
 4. "Tinha dívidas com a vítima?"
 5. "Já trabalhou com a vítima?"
-
 
 import javax.swing.JOptionPane;
 
@@ -36,9 +34,8 @@ public class Main {
             if (resposta==0) resultados++;  
 
 
-O programa deve no final emitir uma classificação sobre a participação da pessoa no crime. Se a
-pessoa responder positivamente a 2 questões deve ser classificada como "Suspeita", entre 3 e 4 como
-"Cúmplice" e 5 como "Assassino". Caso contrário, será classificada como "Inocente".
+O programa deve no final emitir uma classificação sobre a participação da pessoa no crime. 
+Se a pessoa responder positivamente a 2 questões deve ser classificada como "Suspeita", entre 3 e 4 como "Cúmplice" e 5 como "Assassino". Caso contrário, será classificada como "Inocente".
 No final deve dar possibilidade de repetir.
 
 
