@@ -1,0 +1,184 @@
+Classe JOptionPane
+	- showInputDialog (caixa de diálogo para receber dados do utilizador)
+	- showMessageDialog (mostrar os dados)
+	- showConfirmDialog (caixa de diálogo para confirmação)
+	
+try{
+	<ações>
+}
+catch(classe de exceção e){
+	<ações>
+}
+
+*------------------------------------------------------------------
+Estruturas de seleção (if e switch)
+
+if(<condição>){
+	bloco de instruções se a condição é verdadeira
+}
+else{
+	bloco de instruções se a condição é falsa
+}
+*-------------------------------------------------------------------
+if(<condição>){
+	bloco de instruções se a condição é verdadeira
+}
+else if(<condição>){
+	bloco de instruções se a condição é verdadeira
+}
+...
+else{
+	bloco de instruções se a condição é falsa
+}
+*-------------------------------------------------------------------
+switch(<variavel/expressão>){
+	case <valor1>:
+		bloco de instruções
+		break
+	case <valor2>:
+		bloco de instruções
+		break	
+	...
+	default:
+		bloco de instruções
+}
+________________
+Classes, objectos e métodos.
+
+As classes e os objectos
+
+Um objecto é uma construção de software que corresponde a uma entidade concreta ou abstrata do mundo real. Pode servir para representar uma pessoa, um botão, etc...
+
+Cada objecto pertence a uma classe, que é a mtariz a partir da qual os objectos são criados. Ao objecto damos o nome de instância da classe.
+
+Classe Scanner
+
+Objecto -> Teclado (instância da classe Scanner)
+
+Os botões de comando usados nas aplicações pertencem à classe Button. 
+
+New - É o construtor usada para criar os objectos.
+
+Scanner Teclado=new Scanner(System.in)
+
+*----------------------------------------------------------------------------
+A definição de uma classe
+
+A forma mais simples de definir uma classe:
+
+class NomeClasse{
+	Bloco de instruções da classe
+}
+
+A palavra class é utilizada obrigatoriamente na definição de uma classe.
+
+*----------------------------------------------------------------------------
+Os elementos básicos de definição de uma classe são as variáveis e os métodos.
+
+Class NovaClasse
+
+	---------------			Variáveis membro
+	---------------
+	---------------
+	
+			------------	Métodos
+			------------
+			------------
+			------------
+			------------
+	
+*---------------------------------------------------------------------------
+Métodos
+
+As funções internas dos objectos designam-se por métodos, que permitem executar tarefas e interagir com outros objectos.
+
+Os métodos podem retornar ou não um valor.
+
+A definição de um método é feita no bloco da definição e obedece à seguinte estrutura:
+
+tipo NomeMetodo(tipo arg1, tipo arg2,...){
+	bloco de instruções
+}
+
+tipo NomeMetodo(){
+	bloco de instruções
+}	
+	
+O tipo do método pode ser do tipo void(não retorna nenhum) ou não void(devolução de um valor)
+
+class NovaClasse{
+	int x;
+	String y;
+	
+	void metodo1(){
+		bloco de instruções	(não recebe argumentos e não retorna qualquer valor)
+	}
+	int metodo2(int a, int b){
+		bloco de instruções		(Recebe 2 argumentos do tipo inteiro e retorna 		um valor inteiro)
+	}
+}
+___________
+Estruturas_controlo
+Estruturas de repetição/iterativas/ciclicas.
+
+	- while
+	- do while
+	- for
+	
+while (<condição>){
+	bloco de instruções
+}	
+
+contadores: variáveis que controlam o números de vezes que as ações são processadas.
+
+do{
+	bloco de instruções
+}(<condição>)
+
+
+for(variavel_contador;condição,incremento_decremento){
+	bloco instruções
+}
+*---------------------------------------------------------------------------
+A=20
+
+A=A+10 ou A+=10
+
+A=A-10 ou A-=10
+
+A=A+1 ou A++ ou A+=1
+
+A=A-1 ou A-- ou A-=1
+____________________
+Variaveis e operadores
+Variável-Um espaço de memória criado num dado instante para armazenar um determinado valor.
+
+Tipos de dados:
+	int - inteiro
+	float - real (4 bytes)
+	double - real (8 bytes)
+	char - caracter
+	string - cadeia de texto
+	boolean - lógico
+	date/time - data/hora
+
+Operadores aritméticos:
+	+ - adição
+	- - subtração
+	* - multiplicação
+	/ - divisão
+	% - resto da divisão
+
+Operadores relacionais:
+	> 	- maior
+	>=	- maior ou igual
+	<	- menor
+	<=	- menor ou igual
+	==	- igual
+	!=	- diferente
+
+Operadores lógicos:
+	&& 	- e lógico
+	||	- ou lógico
+	!	- negação	
+
