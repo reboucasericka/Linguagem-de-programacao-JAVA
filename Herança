@@ -1,0 +1,285 @@
+Animais.java
+
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
+
+public class Animais {
+    private String Nome, Cor, Ambiente;
+    private float Comprimento, Velocidade;
+    private int Patas;
+
+    // método construtor da classe
+    public Animais(String Nome, String Cor, String Ambiente,
+            float Comprimento, float Velocidade, int Patas){
+        this.Nome=Nome;
+        this.Cor=Cor;
+        this.Ambiente=Ambiente;
+        this.Comprimento=Comprimento;
+        this.Velocidade=Velocidade;
+        this.Patas=Patas;
+    }
+    
+    // método para mostrar os dados
+    public void DadosAnimal(){
+        DecimalFormat Ft1=new DecimalFormat("0.00 cm");
+        DecimalFormat Ft2=new DecimalFormat("0.00 ms");
+        JOptionPane.showMessageDialog(null, 
+                "Nome:"+this.getNome()+
+                "\nCor:"+this.getCor()+
+                "\nAmbiente:"+this.getAmbiente()+        
+                "\nComprimento:"+Ft1.format(this.getComprimento())+        
+                "\nVelocidade:"+Ft2.format(this.getVelocidade())+        
+                "\nPatas:"+this.getPatas(),"Classe Animais",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    /**
+     * @return the Nome
+     */
+    public String getNome() {
+        return Nome;
+    }
+
+    /**
+     * @param Nome the Nome to set
+     */
+    public void setNome(String Nome) {
+        this.Nome = Nome;
+    }
+
+    /**
+     * @return the Cor
+     */
+    public String getCor() {
+        return Cor;
+    }
+
+    /**
+     * @param Cor the Cor to set
+     */
+    public void setCor(String Cor) {
+        this.Cor = Cor;
+    }
+
+    /**
+     * @return the Ambiente
+     */
+    public String getAmbiente() {
+        return Ambiente;
+    }
+
+    /**
+     * @param Ambiente the Ambiente to set
+     */
+    public void setAmbiente(String Ambiente) {
+        this.Ambiente = Ambiente;
+    }
+
+    /**
+     * @return the Comprimento
+     */
+    public float getComprimento() {
+        return Comprimento;
+    }
+
+    /**
+     * @param Comprimento the Comprimento to set
+     */
+    public void setComprimento(float Comprimento) {
+        this.Comprimento = Comprimento;
+    }
+
+    /**
+     * @return the Velocidade
+     */
+    public float getVelocidade() {
+        return Velocidade;
+    }
+
+    /**
+     * @param Velocidade the Velocidade to set
+     */
+    public void setVelocidade(float Velocidade) {
+        this.Velocidade = Velocidade;
+    }
+
+    /**
+     * @return the Patas
+     */
+    public int getPatas() {
+        return Patas;
+    }
+
+    /**
+     * @param Patas the Patas to set
+     */
+    public void setPatas(int Patas) {
+        this.Patas = Patas;
+    }
+    
+    
+}
+____
+Mamiferos.java
+
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
+
+public class Mamiferos extends Animais{
+    private String Alimento;
+    // criar o método construtor
+    public Mamiferos(String Nome, String Cor, String Ambiente,
+            float Comprimento,float Velocidade, int Patas, String Alimento){
+        super(Nome, Cor, Ambiente,Comprimento, Velocidade, Patas);
+        this.Alimento=Alimento;
+        
+   }
+
+   // método para mostrar os dados
+    public void DadosMamifero(){
+        DecimalFormat Ft1=new DecimalFormat("0.00 cm");
+        DecimalFormat Ft2=new DecimalFormat("0.00 ms");
+        JOptionPane.showMessageDialog(null, 
+                "Nome:"+super.getNome()+
+                "\nCor:"+super.getCor()+
+                "\nAmbiente:"+super.getAmbiente()+        
+                "\nComprimento:"+Ft1.format(super.getComprimento())+        
+                "\nVelocidade:"+Ft2.format(super.getVelocidade())+        
+                "\nPatas:"+super.getPatas()+
+                "\nAlimento:"+this.Alimento,"Classe Mamíferos",
+                JOptionPane.INFORMATION_MESSAGE);
+    }        
+    
+    /**
+     * @return the Alimento
+     */
+    public String getAlimento() {
+        return Alimento;
+    }
+
+    /**
+     * @param Alimento the Alimento to set
+     */
+    public void setAlimento(String Alimento) {
+        this.Alimento = Alimento;
+    }
+}
+____
+Peixes.java
+
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
+
+public class Peixes extends Animais{
+    private String Caracteristicas;
+    
+    public Peixes(String Nome, String Cor, String Ambiente, 
+            float Comprimento, float Velocidade, int Patas,
+            String Caracteristicas){
+        super(Nome, Cor,Ambiente,Comprimento,Velocidade,Patas);
+        this.Caracteristicas=Caracteristicas;
+    }
+    // método para mostrar os dados
+    public void DadosPeixe(){
+        DecimalFormat Ft1=new DecimalFormat("0.00 cm");
+        DecimalFormat Ft2=new DecimalFormat("0.00 ms");
+        JOptionPane.showMessageDialog(null, 
+                "Nome:"+super.getNome()+
+                "\nCor:"+super.getCor()+
+                "\nAmbiente:"+super.getAmbiente()+        
+                "\nComprimento:"+Ft1.format(super.getComprimento())+        
+                "\nVelocidade:"+Ft2.format(super.getVelocidade())+        
+                "\nPatas:"+super.getPatas()+
+                "\nCaracterísticas:"+this.Caracteristicas,"Classe Peixes",
+                JOptionPane.INFORMATION_MESSAGE);
+    }    
+   
+    /**
+     * @return the Caracteristicas
+     */
+    public String getCaracteristicas() {
+        return Caracteristicas;
+    }
+
+    /**
+     * @param Caracteristicas the Caracteristicas to set
+     */
+    public void setCaracteristicas(String Caracteristicas) {
+        this.Caracteristicas = Caracteristicas;
+    }
+    
+    
+    
+}
+____
+TestarAnimais.java
+
+public class TestaAnimais {
+
+    public static void main(String[] args) {
+        // criar uma instância para a classe Animais
+        Animais An=new Animais("Camelo","Amarelo","Deserto",
+                200,2,4);
+        An.DadosAnimal();
+        
+        // criar uma instância para a classe Peixes
+        Peixes Px=new Peixes("Tubarão","Cinza","Mar",300,
+                1.5f,0,"Barbatanas");
+        
+        Px.DadosPeixe();
+        // criar uma instância para a classe Mamiferos
+        Mamiferos Ma=new Mamiferos("Canguru","Amarelo","Terra",120,13,
+                4,"Fruta");
+        Ma.DadosMamifero();
+    }
+
+}
+_____
+TestarAnimais2.java
+import javax.swing.JOptionPane;
+
+public class TestaAnimais2 {
+
+    public static void main(String[] args) {
+        String[] Operacoes={"Animais","Peixes","Mamíferos"};
+    
+        
+        do{
+            
+            int Escolha=JOptionPane.showOptionDialog(null, 
+                    "Escolha a operação pretendida", "Classe Animais", 
+                    JOptionPane.YES_NO_CANCEL_OPTION, 
+                    JOptionPane.PLAIN_MESSAGE, null, 
+                    Operacoes, null);
+            
+            switch(Escolha){
+                case 0 -> {
+                    // criar uma instância para a classe Animais
+                    Animais An=new Animais("Camelo","Amarelo","Deserto",
+                            200,2,4);
+                    An.DadosAnimal();                    
+                }
+                case 1 -> {
+                    // criar uma instância para a classe Peixes
+                    Peixes Px=new Peixes("Tubarão","Cinza","Mar",300,
+                            1.5f,0,"Barbatanas");
+
+                    Px.DadosPeixe();                    
+                }   
+                case 2 ->  {
+                    // criar uma instância para a classe Mamiferos
+                   Mamiferos Ma=new Mamiferos("Canguru","Amarelo","Terra",120,13,
+                           4,"Fruta");
+                   Ma.DadosMamifero();                   
+                }
+
+            }
+            
+        }while(JOptionPane.showConfirmDialog(null,"Clique em Yes para continuar",
+                "Classe Calculadora",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION);
+            
+    }
+
+}
+
+
