@@ -1,0 +1,166 @@
+Crie uma classe em Java por forma a receber alguns elementos de uma conta bancária como por exemplo: O nº da conta, o nome do cliente e o saldo.
+A classe deve considerar os seguintes métodos:
+1º Inicialização da conta.
+2º Depósito.
+3º Levantamento.
+4º Consulta.
+
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
+
+public class ContaBancaria {
+    private String NumeroConta;
+    private String NomeCliente;
+    private float Saldo;
+    
+    // setter  e getter para a propriedade NumeroConta
+    public void setNumeroConta(String NumeroConta){
+        this.NumeroConta=NumeroConta;
+    }
+    public String getNumeroConta(){
+        return(this.NumeroConta);
+    }
+    // setter  e getter para a propriedade NomeCliente
+    public void setNomeCliente(String NomeCliente){
+        this.NomeCliente=NomeCliente;
+    }
+    public String getNomeCliente(){
+        return(this.NomeCliente);
+    }  
+    // setter  e getter para a propriedade Saldo
+    public void setSaldo(float Saldo){
+        this.Saldo=Saldo;
+    }
+    public float getSaldo(){
+        return(this.Saldo);
+    }    
+
+    public void Inicializar_Conta(){
+        this.NumeroConta=JOptionPane.showInputDialog(null,"Digite o nº da conta");
+        this.NomeCliente=JOptionPane.showInputDialog(null,"Digite o nome do cliente");
+        
+        boolean ValidaSaldo=false;
+        do{
+            try{
+                this.Saldo=Float.parseFloat(JOptionPane.showInputDialog(null,"Digite o valor do saldo inicial"));
+                if(this.Saldo<=0){
+                    JOptionPane.showMessageDialog(null, "O valor do saldo inicial não é válido",
+                        "Saldo inicial",JOptionPane.INFORMATION_MESSAGE);               
+                }
+                else{
+                   ValidaSaldo=true; 
+                }
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Verifique os dados.",
+                        "Saldo inicial",JOptionPane.ERROR_MESSAGE);
+            }
+        }while(!ValidaSaldo);
+    }
+    
+    public void Depositar(){
+        boolean ValidaSaldo=false;
+        do{
+            try{
+                float Montante=Float.parseFloat(JOptionPane.showInputDialog(null,
+                        "Digite o valor a depositar"));
+                if(Montante<=0){
+                    JOptionPane.showMessageDialog(null, "Valor não é válido",
+                        "Depositar",JOptionPane.INFORMATION_MESSAGE);               
+                }
+                else{
+                   this.Saldo+=Montante;
+                   ValidaSaldo=true; 
+                }
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Verifique os dados.",
+                        "Depositar",JOptionPane.ERROR_MESSAGE);
+            }
+        }while(!ValidaSaldo);        
+    }
+    
+    public void Levantar(){
+        boolean ValidaSaldo=false;
+        do{
+            try{
+                float Montante=Float.parseFloat(JOptionPane.showInputDialog(null,
+                        "Digite o valor a levantar"));
+                if(Montante<=0 || Montante>this.Saldo ){
+                    JOptionPane.showMessageDialog(null, "Valor não é válido",
+                        "Levantamento",JOptionPane.INFORMATION_MESSAGE);               
+                }
+                else{
+                   this.Saldo-=Montante;
+                   ValidaSaldo=true; 
+                }
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Verifique os dados.",
+                        "Levantamento",JOptionPane.ERROR_MESSAGE);
+            }
+        }while(!ValidaSaldo);        
+    }  
+    
+    public void ConsultaConta(){
+        DecimalFormat Ft=new DecimalFormat("#,##0.00 €");
+        JOptionPane.showMessageDialog(null, 
+        "Nº da Conta: "+this.NumeroConta+
+        "\nNome do cliente: "+this.NomeCliente+
+        "\nSaldo da Conta: "+Ft.format(this.Saldo),
+        "Saldo da conta",JOptionPane.INFORMATION_MESSAGE);
+    }
+}
+---TestarConta.java
+
+import javax.swing.JOptionPane;
+
+public class TestarConta {
+    
+    public static void main(String[] args) {
+        
+        ContaBancaria CB=new ContaBancaria();
+        
+        CB.Inicializar_Conta();
+        
+        CB.Depositar();
+        
+        CB.Levantar();
+
+        CB.ConsultaConta();
+    }
+
+}
+--TestarContaBancariaNem.java
+
+
+import javax.swing.JOptionPane;
+
+public class TestarContaBancariaNew {
+    
+    public static void main(String[] args) {
+        String[] Opcoes={"Inicializar a conta","Depositar","Levantamento","Consulta de saldo"};
+        
+        ContaBancaria CB=new ContaBancaria();
+        
+        do{ 
+            int Escolha=JOptionPane.showOptionDialog(null, 
+                    "Escolha a operação", 
+                    "Movimentos bancários", 
+                    JOptionPane.YES_NO_OPTION, 
+                    JOptionPane.PLAIN_MESSAGE, null, Opcoes, null);
+            
+            switch(Escolha){
+                case 0->CB.Inicializar_Conta();
+                case 1->CB.Depositar();
+                case 2->CB.Levantar();
+                case 3->CB.ConsultaConta();
+            }
+        }while(JOptionPane.showConfirmDialog(null, "Clique em Yes para nova operação",
+                "Conta bancária",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION);
+    }
+
+}
+
+
+
