@@ -1,0 +1,275 @@
+Para todos os funcionários a empresa necessita manter o registo do nome, contacto móvel e email do funcionário.
+Os vendedores têm um salário base, mas ganham também comissão sobre as vendas.
+Os administrativos têm um salário fixo, mas podem ganhar horas extras.
+Os financeiros têm um salário fixo, mas podem ganhar um prémio de produtividade.
+
+Crie uma hierarquia de classes que tenha uma classe "mãe"(Funcionarios.java) e implemente o que for comum aos três tipos de funcionários e uma subclasse para cada tipo. 
+Defina o tipo de dado mais adequado para os atributos das classes. 
+Crie os métodos get e set para os atributos e métodos construtores que julgue conveniente.
+Os vendedores devem ter um método que imprima o seu salário total considerando que a comissão é de 5% sobre o valor das vendas.
+Nos administrativos as horas extras são pagas a 3 euros à hora.
+Nos financeiros o prémio mensal é variável.
+Nos três casos, o método que imprime o salário deve apresentar a formatação em euros (use a classe DecimalFormat).
+Crie uma classe TestarFuncionarios que possua um método main para testar as classes criadas:
+→ Crie um objeto para cada tipo de funcionário e apresente os dados gerais dos mesmos bem como o salário a receber tendo em conta as imposições referidas acima.
+→Os valores a passar para os métodos ou parâmetros devem ser solicitados ao utilizador (use a classe Scanner ou JOptionPane).
+_________
+Administrativos.java
+
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
+
+public class Administrativos extends Funcionarios{
+    private float HorasExtras;
+
+    public Administrativos(String Nome, String Email,String Movel, float SalarioBase, float HorasExtras){
+        super(Nome,Email,Movel,SalarioBase);
+        this.HorasExtras=HorasExtras;
+    }
+
+    public void SalarioAdministrativo(){
+        DecimalFormat Ft=new DecimalFormat("#,##0.00 Eur");
+        JOptionPane.showMessageDialog(null, 
+                "Nome:"+super.getNome()+
+                 "\nEmail:"+super.getEmail()+
+                 "\nMóvel:"+super.getMovel()+
+                 "\nSalário Base:"+Ft.format(super.getSalarioBase())+
+                 "\nNº de horas extra:"+Ft.format(this.HorasExtras)+
+                 "\nValor das horas:"+Ft.format(this.HorasExtras*3)+                        
+                 "\nVencimento final:"+
+                 Ft.format(super.getSalarioBase()+this.getHorasExtras()*3), 
+                "Salário do Administrativo", 
+                 JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public float getHorasExtras() {
+        return HorasExtras;
+    }
+
+    
+    public void setHorasExtras(float HorasExtras) {
+        this.HorasExtras = HorasExtras;
+    }
+    
+}
+___________
+Financeiros,java
+
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
+
+public class Financeiros extends Funcionarios{
+    private float Premio;
+
+    
+    public Financeiros(String Nome, String Email,String Movel, float SalarioBase, float Premio){
+        super(Nome,Email,Movel,SalarioBase);
+        this.Premio=Premio;
+    }
+
+    public void SalarioFinanceiro(){
+        DecimalFormat Ft=new DecimalFormat("#,##0.00 Eur");
+        JOptionPane.showMessageDialog(null, 
+                "Nome:"+super.getNome()+
+                 "\nEmail:"+super.getEmail()+
+                 "\nMóvel:"+super.getMovel()+
+                 "\nSalário Base:"+Ft.format(super.getSalarioBase())+
+                 "\nValor do prémio:"+Ft.format(this.Premio)+                     
+                 "\nVencimento final:"+
+                 Ft.format(super.getSalarioBase()+this.getPremio()), 
+                "Salário do Financeiro", 
+                 JOptionPane.INFORMATION_MESSAGE);
+    }    
+    
+    
+    public float getPremio() {
+        return Premio;
+    }
+
+    
+    public void setPremio(float Premio) {
+        this.Premio = Premio;
+    }
+    
+    
+}
+_____________
+Funcionarios.java
+
+public class Funcionarios {
+    private String Nome,Email,Movel;
+    private float SalarioBase;
+
+   
+    public Funcionarios(String Nome, String Email, String Movel,float SalarioBase){
+        this.Nome=Nome;
+        this.Email=Email;
+        this.Movel=Movel;
+        this.SalarioBase=SalarioBase;
+    }
+    
+    public String getNome() {
+        return Nome;
+    }
+
+   
+    public void setNome(String Nome) {
+        this.Nome = Nome;
+    }
+
+    
+    public String getEmail() {
+        return Email;
+    }
+
+   
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+
+    
+    public String getMovel() {
+        return Movel;
+    }
+
+    
+    public void setMovel(String Movel) {
+        this.Movel = Movel;
+    }
+
+    
+    public float getSalarioBase() {
+        return SalarioBase;
+    }
+
+    
+    public void setSalarioBase(float SalarioBase) {
+        this.SalarioBase = SalarioBase;
+    }
+    
+    
+    
+}
+_______________
+TestaFuncionarios.java
+
+import javax.swing.JOptionPane;
+
+public class TestaFuncionarios {
+
+    public static void main(String[] args) {
+        String Nome, Email, Movel;
+        float SalarioBase,Vendas, Premio, Horas;
+        
+        String Opcoes[]={"Vendedor","Administrativo","Financeiro"};
+        
+        do{
+            
+            int resposta=JOptionPane.showOptionDialog(null,
+                    "Selecione o tipo de funcionário", 
+                    "Salário dos funcionários", 
+                    JOptionPane.YES_NO_CANCEL_OPTION, 
+                    JOptionPane.PLAIN_MESSAGE, null, Opcoes, null);
+            // solicitar ao utilizador os dados comuns
+            Nome=JOptionPane.showInputDialog(null,"Digite o nome do "+
+                    Opcoes[resposta]);
+            Email=JOptionPane.showInputDialog(null,"Digite o email do "+
+                    Opcoes[resposta]); 
+            Movel=JOptionPane.showInputDialog(null,"Digite o móvel do "+
+                    Opcoes[resposta]);   
+            SalarioBase=Float.parseFloat(JOptionPane.showInputDialog(null,"Digite o salário base do "+
+                    Opcoes[resposta]));            
+            
+            
+            switch(resposta){
+                case 0 ->{
+                    Vendas=Float.parseFloat(JOptionPane.showInputDialog(null,
+                            "Digite o valor das vendas do vendedor"));  
+                    Vendedores V=new Vendedores(Nome,Email,Movel,SalarioBase,Vendas);
+                    V.SalarioVendedor();
+                }
+                case 1 ->{
+                    Horas=Float.parseFloat(JOptionPane.showInputDialog(null,
+                            "Digite o nº de horas extras do financeiro"));  
+                    Administrativos A=new Administrativos(Nome,Email,Movel,SalarioBase,Horas);
+                    A.SalarioAdministrativo();
+                }  
+                case 2 ->{
+                    Premio=Float.parseFloat(JOptionPane.showInputDialog(null,
+                            "Digite o valor do prémio do financeiro"));  
+                    Financeiros F=new Financeiros(Nome,Email,Movel,SalarioBase,Premio);
+                    F.SalarioFinanceiro();
+                }                  
+                
+            }
+        }while(JOptionPane.showConfirmDialog(null,"Clique em Yes para continuar",
+                "Funcionários",
+                JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION);
+    }
+
+}
+_____________
+TesteFase1.java
+
+public class TesteFase1 {
+
+    public static void main(String[] args) {
+        // criar uma instância para a classe vendedor
+        Vendedores V=new Vendedores("Ana Maria Silva", "anas@gmail.com",
+                "+351912342687",1200f,10000f);
+        V.SalarioVendedor();
+        
+        //criar uma instância da classe administrativos
+        Administrativos A=new Administrativos("Daniel Alves","daalves@gmail.com",
+        "+351216754309",1000f,15);
+        
+        A.SalarioAdministrativo();
+        
+        // criar uma instância da classe Financeiro
+        Financeiros F=new Financeiros("Vitor Dinis","vdinis@gmail.com","+351967896534",
+        1800f,500f);
+        F.SalarioFinanceiro();
+    }
+
+}
+_____________
+Vendedores.java
+
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
+
+public class Vendedores extends Funcionarios{
+    private float VolumeVendas;
+
+    
+    public Vendedores(String Nome, String Email,String Movel, float SalarioBase, float VolumeVendas){
+        super(Nome,Email,Movel,SalarioBase);
+        this.VolumeVendas=VolumeVendas;
+    }
+    
+    public void SalarioVendedor(){
+        DecimalFormat Ft=new DecimalFormat("#,##0.00 Eur");
+        JOptionPane.showMessageDialog(null, 
+                "Nome:"+super.getNome()+
+                 "\nEmail:"+super.getEmail()+
+                 "\nMóvel:"+super.getMovel()+
+                 "\nSalário Base:"+Ft.format(super.getSalarioBase())+
+                 "\nVolume de Vendas:"+Ft.format(this.VolumeVendas)+
+                 "\nValor da comissão:"+Ft.format(this.VolumeVendas*0.05)+
+                 "\nVencimento final:"+
+                 Ft.format(super.getSalarioBase()+this.VolumeVendas*0.05), "Salário do Vendedor", 
+                 JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public float getVolumeVendas() {
+        return VolumeVendas;
+    }
+
+    
+    public void setVolumeVendas(float VolumeVendas) {
+        this.VolumeVendas = VolumeVendas;
+    }
+    
+}
+
+
