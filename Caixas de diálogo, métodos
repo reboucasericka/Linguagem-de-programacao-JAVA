@@ -1,0 +1,269 @@
+Crie uma função em Java que receba o nome e o apelido e escreva no seguinte formato:
+O seu nome é apelido, nome.
+Nota: Use as caixas de diálogo para interface com o utilizador
+import javax.swing.JOptionPane;
+
+public class Exercicio1 {
+    
+    public static void main(String[] args) {
+        String Nome=JOptionPane.showInputDialog(null,"Digite o seu nome");
+        String Apelido=JOptionPane.showInputDialog(null,"Digite o seu apelido");
+        Apelido_Nome(Nome,Apelido);
+        
+        JOptionPane.showMessageDialog(null, Apelido_Nome1(Nome,Apelido),
+                "Exercicio 1",JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public static void Apelido_Nome(String Nome, String Apelido){
+        JOptionPane.showMessageDialog(null, "O seu nome é "+Apelido+", "+Nome,
+                "Exercicio 1",JOptionPane.INFORMATION_MESSAGE);
+    }
+    public static String Apelido_Nome1(String Nome, String Apelido){
+        return("O seu nome é "+Apelido+", "+Nome);
+             
+    }    
+    
+}
+
+Crie uma função em Java que receba uma String e devolva todos os caracteres em letra maiúscula.
+import javax.swing.JOptionPane;
+
+public class Exercicio2 {
+    
+    public static void main(String[] args) {
+       String Texto=JOptionPane.showInputDialog(null,"Digite o texto");  
+       Maiusculas(Texto);  
+       
+       JOptionPane.showMessageDialog(null, Maiusculas1(Texto),
+                "Exercicio 2",JOptionPane.INFORMATION_MESSAGE);  
+    }
+
+    public static void Maiusculas(String Texto){
+       JOptionPane.showMessageDialog(null, Texto.toUpperCase(),
+                "Exercicio 2",JOptionPane.INFORMATION_MESSAGE);        
+    }
+    
+    public static String Maiusculas1(String Texto){
+       return(Texto.toUpperCase()); 
+    }    
+}
+
+Crie uma função em Java que dado um valor numérico digitado pelo utilizador (armazenado numa variável inteira), imprima cada um dos seus dígitos por extenso.
+Exemplo:
+O número: 4571 Resultado: quatro, cinco, sete, um
+import javax.swing.JOptionPane;
+
+public class Exercicio3 {
+    
+    public static void main(String[] args) {
+       String Numero=JOptionPane.showInputDialog(null,"Digite um número");
+       
+       Extenso(Numero);
+       
+       JOptionPane.showMessageDialog(null, Extenso1(Numero)
+        ,"Exercicio 3", JOptionPane.INFORMATION_MESSAGE);
+       
+    }
+    
+    public static void Extenso(String Numero){
+        // declarar o array com o extenso dos números
+        String Extenso[]={"Zero","Um","Dois","Três","Quatro","Cinco","Seis","Sete","Oito","Nove"};
+        String saida="";
+        for(int i=0;i<Numero.length();i++){
+            int posicao=Integer.parseInt(String.valueOf(Numero.charAt((i))));
+            saida+=Extenso[posicao]+", ";
+        }
+        JOptionPane.showMessageDialog(null, "O número: "+Numero+" Resultado: "
+         +saida.substring(0,saida.length()-2)
+        ,"Exercicio 3", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public static String Extenso1(String Numero){
+        // declarar o array com o extenso dos números
+        String Extenso[]={"Zero","Um","Dois","Três","Quatro","Cinco","Seis","Sete","Oito","Nove"};
+        String saida="";
+        for(int i=0;i<Numero.length();i++){
+            int posicao=Integer.parseInt(String.valueOf(Numero.charAt((i))));
+            saida+=Extenso[posicao]+", ";
+        }
+        return("O número: "+Numero+" Resultado: "+saida.substring(0,saida.length()-2));
+    }
+    
+}
+
+Crie uma função em Java que, a partir de um texto digitado pelo utilizador, conte o número de palavras (palavra é definida por qualquer sequência de caracteres delimitada por espaços em branco) e mostre o resultado.
+import javax.swing.JOptionPane;
+
+public class Exercicio4 {
+    
+    public static void main(String[] args) {
+         String Frase=JOptionPane.showInputDialog(null,"Digite uma frase");
+         ContaPalavras(Frase);
+         
+        JOptionPane.showMessageDialog(null, "Na frase existem "+
+        ContaPalavras1(Frase)+" palavras.","Exercicio 4",
+        JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public static void ContaPalavras(String Frase){
+        int contador=1;
+        for(int i=0;i<Frase.length();i++){
+            if(String.valueOf(Frase.charAt(i)).equals(" ")){
+                contador++;
+            }
+        }
+        JOptionPane.showMessageDialog(null, "Na frase existem "+
+                contador+" palavras.","Exercicio 4",JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public static int ContaPalavras1(String Frase){
+        int contador=1;
+        for(int i=0;i<Frase.length();i++){
+            if(String.valueOf(Frase.charAt(i)).equals(" ")){
+                contador++;
+            }
+        }
+        return(contador);
+    }
+}
+
+Crie uma função que receba um valor decimal e uma percentagem de desconto e apresente o valor do desconto.
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
+
+public class Exercicio5 {
+    
+    public static void main(String[] args) {
+        DecimalFormat Ft1=new DecimalFormat("0.00 €");
+        float Valor=Float.parseFloat(JOptionPane.showInputDialog(null,
+                "Digite o valor"));
+        float Percentagem=Float.parseFloat(JOptionPane.showInputDialog(null,
+                "Digite a % do desconto"));   
+        Calcula_Valor_Desconto(Valor, Percentagem);
+        
+       JOptionPane.showMessageDialog(null,
+        Ft1.format(Calcula_Valor_Desconto1(Valor, Percentagem)),
+        "Exercicio 5"      
+        ,JOptionPane.INFORMATION_MESSAGE);       
+    }
+    
+    public static void Calcula_Valor_Desconto(float Valor, float Percentagem){
+        DecimalFormat Ft=new DecimalFormat("0.00 €"); 
+        JOptionPane.showMessageDialog(null, Ft.format(Valor*(Percentagem/100)),"Exercicio 5"      
+        ,JOptionPane.INFORMATION_MESSAGE);
+    }
+    public static float Calcula_Valor_Desconto1(float Valor, float Percentagem){
+       return(Valor*(Percentagem/100));
+    }    
+}
+
+Crie uma função que receba a idade de uma pessoa em anos e devolva a informação se é ou não maior.
+import javax.swing.JOptionPane;
+
+public class Exercicio6 {
+    
+    public static void main(String[] args) {
+        int Idade=Integer.parseInt(JOptionPane.showInputDialog(null,
+                "Qual a idade?"));
+        JOptionPane.showMessageDialog(null,Maior(Idade),
+                "Exercício 6",JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public static String Maior(int Idade){
+        if(Idade>=18){
+            return("É maior.");
+        }
+        else{
+            return("É menor.");
+        }
+    }
+}
+
+Crie uma função que gere um número aleatório entre 0 e 50 e devolva a informação se o número é par ou ímpar.
+import java.util.Random;
+import javax.swing.JOptionPane;
+
+public class Exercicio7 {
+    
+    public static void main(String[] args) {
+        Random R=new Random();
+        
+        JOptionPane.showMessageDialog(null,Par_Impar(R.nextInt(51)),
+        "Exercício 7",JOptionPane.INFORMATION_MESSAGE);
+        
+    }
+    
+    public static String Par_Impar(int Numero){
+        if(Numero%2==0){
+            return(Numero+" é um número par.");
+        }
+        else{
+            return(Numero+" é um número ímpar.");
+        }
+    }
+}
+
+Crie uma função que receba um número inteiro e retorne o quadrado desse número.
+import javax.swing.JOptionPane;
+
+public class Exercicio8 {
+    
+    public static void main(String[] args) {
+        double Numero=Double.parseDouble(JOptionPane.showInputDialog(null,
+                "Digite um número"));
+        JOptionPane.showMessageDialog(null,"O quadrado de "+Numero+" é "+
+                Quadrado(Numero),
+                "Exercício 8",JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public static double Quadrado(double Numero){
+        return(Math.pow(Numero, 2));
+    }
+}
+
+Crie uma função em Java que receba o peso e a altura e devolva o valor do IMC.
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
+
+public class Exercicio9 {
+    
+    public static void main(String[] args) {
+        DecimalFormat Ft=new DecimalFormat("0.00");
+        double Peso=Double.parseDouble(JOptionPane.showInputDialog(null,
+                "Digite o peso em Kg."));
+        double Altura=Double.parseDouble(JOptionPane.showInputDialog(null,
+                "Digite a altura em metros."));
+        
+        JOptionPane.showMessageDialog(null,"O valor do IMC é "+
+                Ft.format(Imc(Peso,Altura)),
+                "Exercício 9",JOptionPane.INFORMATION_MESSAGE);  
+    }
+
+    public static double Imc(double Peso, double Altura){
+        return(Peso/(Math.pow(Altura, 2)));
+    }
+}
+
+Crie uma função em java que receba um array de cinco números inteiros e devolva qual o maior
+número inserido.
+import javax.swing.JOptionPane;
+
+public class Exercicio10 {
+    
+    public static void main(String[] args) {
+        int Numeros[]={5,3,10,8,9};
+        JOptionPane.showMessageDialog(null,"O maior valor é "+
+        Maior(Numeros),
+        "Exercício 10",JOptionPane.INFORMATION_MESSAGE); 
+    }
+    
+    public static int Maior(int Lista[]){
+        int maior=0;
+        for(int i=0;i<5;i++){
+            if(Lista[i]>maior) maior=Lista[i];
+        }
+        return(maior);
+    }
+}
+
+
